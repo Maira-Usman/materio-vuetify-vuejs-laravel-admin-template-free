@@ -60,6 +60,80 @@ const routes = [
     },
   },
   {
+    path: '/category',
+    name: 'category',
+    component: () => import('@/views/category/index.vue'),
+   
+  },
+  {
+    path: '/editcategory',
+    name: 'category',
+    component: () => import('@/views/category/edit.vue'),
+   
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import('@/views/user/index.vue'),
+   
+  },
+  {
+    path: '/edituser',
+    name: 'user',
+    component: () => import('@/views/user/edit.vue'),
+   
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: () => import('@/views/order/index.vue'),
+   
+  },
+  {
+    path: '/editorder',
+    name: 'order',
+    component: () => import('@/views/order/edit.vue'),
+   
+  },
+  {
+    path: '/page',
+    name: 'page',
+    component: () => import('@/views/page/index.vue'),
+   
+  },
+  {
+    path: '/editpage',
+    name: 'page',
+    component: () => import('@/views/page/edit.vue'),
+   
+  },
+  {
+    path: '/coupon',
+    name: 'coupon',
+    component: () => import('@/views/coupon/index.vue'),
+   
+  },
+  {
+    path: '/editcoupon',
+    name: 'coupon',
+    component: () => import('@/views/coupon/edit.vue'),
+   
+  },
+
+  {
+    path: '/exam',
+    name: 'exam',
+    component: () => import('@/views/exam/index.vue'),
+   
+  },
+  {
+    path: '/editexam',
+    name: 'exam',
+    component: () => import('@/views/exam/edit.vue'),
+   
+  },
+  
+  {
     path: '/error-404',
     name: 'error-404',
     component: () => import('@/views/Error.vue'),
@@ -71,6 +145,7 @@ const routes = [
     path: '*',
     redirect: 'error-404',
   },
+  
 ]
 
 const router = new VueRouter({

@@ -17,6 +17,7 @@ export default {
     LayoutBlank,
     LayoutContent,
     UpgradeToPro,
+    
   },
   setup() {
     const { route } = useRouter()
