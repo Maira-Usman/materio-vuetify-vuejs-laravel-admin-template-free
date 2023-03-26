@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
+        Schema::create('coupons', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection')->nullable(0);
-            $table->text('queue')->nullable(0);
-            $table->longText('payload')->nullable(0);
-            $table->longText('exception')->nullable(0);
-            $table->timestamp('failed_at')->useCurrent();
+            $table->string('code');
+            $table->integer('discount');
+            $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('coupons');
     }
 };

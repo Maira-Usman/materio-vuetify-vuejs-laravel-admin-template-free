@@ -26,7 +26,12 @@
   </noscript>
 
   <div id="app">
+    <div class="py-4">
+      @yield('content')
+  </div>
+    <data-component></data-component>
   </div>
 </body>
 
 </html>
+
