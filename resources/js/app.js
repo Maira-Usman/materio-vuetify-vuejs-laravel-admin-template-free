@@ -34,11 +34,11 @@ const app = new Vue({
         });
     }
   },
+  
   mounted() {
     this.getUsers();
   }
 });
-
-export default app;
+export default App;
 
 

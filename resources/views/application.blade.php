@@ -16,21 +16,25 @@
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <script src="{{ asset(mix('js/app.js')) }}" defer></script>
+  
 </head>
 
 <body>
   <noscript>
     <strong>We're sorry but Materio - Vuetify Vuejs Admin Template doesn't work properly without JavaScript enabled.
-      Please enable it to continue.</strong>
+      Please enable it to continue
+    </strong>
   </noscript>
 
   <div id="app">
     <div class="py-4">
       @yield('content')
-  </div>
+    </div>
     <data-component></data-component>
   </div>
+  
+
+  <script src="{{ asset(mix('js/app.js')) }}" defer></script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
 import '@/plugins/vue-composition-api'
 import '@resources/sass/styles/styles.scss'
+import axios from 'axios'
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
-
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import router from './router'
@@ -12,10 +12,10 @@ Vue.config.productionTip = false
 
 
 new Vue({
+  el: '#app',
   router,
   store,
   vuetify,
-  el: '#app',
   render: h => h(App),
 }).$mount('#app')
 
