@@ -1,11 +1,13 @@
 <?php
 
+
+
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
-class PagesController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,10 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $pages = Page::paginate(4);
-          
+        $pages = Page::all(['title','action']);
+        return response()->json(['data' => $pages],200);
+        $pages = Page::paginate();
+
     }
 
     /**
@@ -31,7 +35,8 @@ class PagesController extends Controller
             'action' => $request->input('action')
         ]);
         $page->save();
-        
+        return response()->json('page created!');
+
     }
 
     /**

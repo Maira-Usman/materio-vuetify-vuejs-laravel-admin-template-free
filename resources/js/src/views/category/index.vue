@@ -22,7 +22,7 @@
            <button>edit</button>
           </td>
          </tr>
-        <tr v-for="item in category" v-bind:key="item.id">
+        <tr v-for="(category,index) in categories" :key="index">
             {{ category.name }}
             {{ category.quantity }}
             {{ category.action }}
@@ -38,67 +38,28 @@
 import axios from 'axios';
 export default {
 
-   mounted(){
-  this.getCategories()
-  },
-  methods: {
-            getCategories() {
-              
-                let currentObj = this;
-                axios.get('/categories', {
-                   
-                })
-                .then(function (response) {
-                    this.categories = response.data;
-                })
+   name:"categories",
+    data(){
+        return {
+            categories:[]
+        }
+    },
+    mounted(){
+        this.getCategories()
+    },
+    methods:{
+        async getCategories(){
+            await axios.get('/api/categories').then(response=>{
+                this.categories = response.data
+            }).catch(error=>{
+                console.log(error)
+                this.categories = []
+            })
                 .catch(function (error) {
                     currentObj.output = error;
                 });
             }
 
-  },
-
-
-
-  setup() {
-    const categories = [
-
-      /*
-      {
-      
-        name: 'CISCO',
-        quantity: 6,
-        
-      },
-      {
-       
-        name: 'Micrsoft',
-        quantity: 6,
-        
-      },
-      {
-  
-        name: 'ORACLE',
-        quantity: 6,
-        
-      },
-      {
-        name: 'IBM',
-        quantity: 6,
-        
-      },
-      {
-        
-        name: 'SAP',
-        quantity: 6,
-       
-      },
-      */
-    ]
-
-    return {
-      categories,
-    }
   },
 }
 </script>

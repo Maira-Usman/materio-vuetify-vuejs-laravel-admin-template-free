@@ -79,9 +79,9 @@ export default {
   },
   methods: {
     async getUsers() {
-      let currentObj = await axios
-        .get('api/users', {})
-        .then(function (response) {
+      await axios
+        .get('/api/users')
+        .then(response => {
           this.users = response.data
         })
         .catch(error => {

@@ -20,9 +20,9 @@ Route::get('{any}', function () {
     return view('application');
 })->where('any', '.*');
 
-Route::post('formSubmit','PostController@formSubmit');
+//Route::post('formSubmit','PostController@formSubmit');
 
-Route::get('/u',[UserController::class,'showuser']);
+//Route::get('/u',[UserController::class,'showuser']);
 
-Route::get('users', [UserController::class, 'indexes']);
-Route::get('list', [UserController::class, 'list']);
+//Route::get('users', [UserController::class, 'indexes']);
+//Route::get('list', [UserController::class, 'list']);

@@ -1,70 +1,46 @@
 <template>
-
   <v-simple-table>
     <template v-slot:default>
       <thead>
         <tr>
-          <th class="text-center text-uppercase">
-            orders
-          </th>
+          <th class="text-center text-uppercase">orders</th>
         </tr>
-          <tr>
-          <th class="text-center text-uppercase">
-            ID
-          </th>
-          <th class="text-center text-uppercase">
-            Customer
-          </th>
-          <th class="text-center text-uppercase">
-            Email
-          </th>
-          <th class="text-center text-uppercase">
-            Total Earning
-          </th>
-          <th class="text-center text-uppercase">
-            Exam Code
-          </th>
-          <th class="text-center text-uppercase">
-            Exams
-          </th>
-          <th class="text-center text-uppercase">
-            Date
-          </th>
-          <th class="text-center text-uppercase">
-            Coupon
-          </th>
+        <tr>
+          <th class="text-center text-uppercase">ID</th>
+          <th class="text-center text-uppercase">Customer</th>
+          <th class="text-center text-uppercase">Email</th>
+          <th class="text-center text-uppercase">Total Earning</th>
+          <th class="text-center text-uppercase">Exam Code</th>
+          <th class="text-center text-uppercase">Exams</th>
+          <th class="text-center text-uppercase">Date</th>
+          <th class="text-center text-uppercase">Coupon</th>
         </tr>
       </thead>
       <tbody>
-      
-        <tr
-          v-for="item in orders"
-          :key="item.order"
-        >
-
+        <tr v-for="(order,index) in orders" :key="index">
           <td class="text-center">
-            {{ item.ID }}
+            {{ order.ID }}
           </td>
           <td class="text-center">
-            {{ item.Customer }}
+            {{ order.Customer }}
           </td>
           <td class="text-center">
-            {{ item.Email }}
+            {{ order.Email }}
           </td>
           <td class="text-center">
-            {{ item.TotalEarning }}
+            {{ order.TotalEarning }}
           </td>
           <td class="text-center">
-            {{ item.ExamCode }}
+            {{ order.ExamCode }}
           </td>
           <td class="text-center">
-            {{ item.Exams }}
+            {{ order.Exams }}
           </td>
           <td class="text-center">
-            {{ item.Date }}
+            {{ order.Date }}
           </td>
           <td class="text-center">
-            {{ item.Coupon }}
+            {{ order.Coupon }}
           </td>
         </tr>
       </tbody>
@@ -76,91 +52,29 @@
 import axios from 'axios'
 export default {
 
-   mounted(){
-  this.getCategories()
+  name:"orders",
+    data(){
+        return {
+            orders:[]
+        }
+    },
+    mounted(){
+        this.getOrders()
+    },
+    methods:{
+         getOrders(){
+             axios.get('/api/orders').then(response=>{
+                this.orders = response.data
+            }).catch(error=>{
+                console.log(error)
+                this.orders = []
+            })
+        .catch(function (error) {
+          currentObj.output = error
+        })
+    },
   },
-  methods: {
-            getOrders() {
-              
-                let currentObj = this;
-                axios.get('/orders', {
-                   
-                })
-                .then(function (response) {
-                    this.orders = response.data;
-                })
-                .catch(function (error) {
-                    currentObj.output = error;
-                });
-            }
 
-  },
 
-  setup() {
-    const orders = [
-      /*
-      {
-      
-        ID,
-        Customer,
-        Email,
-        TotalEarning,
-        ExamCode,
-        Exams,
-        Date,
-        Coupon,
-
-        
-      },
-      {
-       
-         ID,
-        Customer,
-        Email,
-        TotalEarning,
-        ExamCode,
-        Exams,
-        Date,
-        Coupon,
-      },
-      {
-  
-         ID,
-        Customer,
-        Email,
-        TotalEarning,
-        ExamCode,
-        Exams,
-        Date,
-        Coupon,
-      },
-      {
-         ID,
-        Customer,
-        Email,
-        TotalEarning,
-        ExamCode,
-        Exams,
-        Date,
-        Coupon,
-      },
-      {
-        
-         ID,
-        Customer,
-        Email,
-        TotalEarning,
-        ExamCode,
-        Exams,
-        Date,
-        Coupon,
-      },
-      */
-    ]
-
-    return {
-      orders,
-    }
-  },
 }
 </script>

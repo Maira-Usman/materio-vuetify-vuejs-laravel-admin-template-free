@@ -29,30 +29,27 @@
           </th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
       
         <tr
-          v-for="item in Exams"
-          :key="item.user"
-        >
-
+          v-for="(exam,index) in exams" :key="index">
           <td class="text-center">
-            {{ item.name }}
+            {{ exam.name }}
           </td>
           <td class="text-center">
-            {{ item.Title }}
+            {{ exam.Title }}
           </td>
           <td class="text-center">
-            {{ item.Slug }}
+            {{ exam.Slug }}
           </td>
           <td class="text-center">
-            {{ item.Certification }}
+            {{ exam.Certification }}
           </td>
           <td class="text-center">
-            {{ item.Price }}
+            {{ exam.Price }}
           </td>
           <td class="text-center">
-            {{ item.Action }}
+            {{ exam.Action }}
           </td>
         </tr>
       </tbody>
@@ -63,20 +60,23 @@
 <script>
 import axios from 'axios'
 export default {
-
-  mounted(){
-  this.getExams() 
-  },
-  methods: {
-            getExams() {
-              
-                let currentObj = this;
-                axios.get('/exams', {
-                   
-                })
-                .then(function (response) {
-                    this.exams = response.data;
-                })
+name:"exams",
+    data(){
+        return {
+            exams:[]
+        }
+    },
+    mounted(){
+        this.getExams()
+    },
+    methods:{
+        async getExams(){
+            await axios.get('/api/exams').then(response=>{
+                this.exams = response.data
+            }).catch(error=>{
+                console.log(error)
+                this.exams = []
+            })
                 .catch(function (error) {
                     currentObj.output = error;
                 });
@@ -84,72 +84,5 @@ export default {
 
   },
 
-
-  setup() {
-    const Exams = [
-
-    
-    /*
-      {
-
-      
-        name: 'Ali',
-        Title: 'False',
-        Slug: 'Male',
-        Certification: 'ABC1lahore',
-        Price: 'Lahore',
-       ]
-        
-
-        
-      },
-      {
-       name: 'Ali',
-        Title: 'False',
-        Slug: 'Male',
-        Certification: 'ABC1lahore',
-        Price: 'Lahore',
-      
-        
-      },
-      {
-  
-        name: 'Ali',
-        Title: 'False',
-        Slug: 'Male',
-        Certification: 'ABC1lahore',
-        Price: 'Lahore',
-       ]
-        
-      },
-      {
-        name: 'Ayesha',
-        Title: 'False',
-        Slug: 'True',
-        Certification: '3344ADClahore',
-        Price: 'Lahore',
-        ]
-        
-        
-      },
-      {
-        
-        name: 'Ahmed',
-        Title: 'False',
-        Slug: 'Male',
-        Certification: 'ABC44ISL',
-        Price: 'Islamabad',
-       
-        
-       
-      },
-      */
-    
-    ]
-
-    return {
-      Exams,
-    }
-  },
 }
 </script>

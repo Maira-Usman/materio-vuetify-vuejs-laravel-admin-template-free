@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\Exam;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +15,11 @@ class ExamController extends Controller
      */
     public function index()
     {
+        $exams = Exam::all(['title','certification','price','action']);
+        return response()->json(['data' => $exams],200);
         $exams = Exam::paginate(4);
+
+
         
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +14,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(3);
+        $users = User::all(['id','name','email','is_admin','gender','address','city','state','country','zip','vat','phone','mobile','actions']);
+        return response()->json(['data' => $users],200);
+        $users = User::paginate(2);
+
         
     }
 

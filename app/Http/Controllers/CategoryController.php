@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,21 +14,26 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        
+        $categories = Category::all(['name','image','quantity','action']);
+        return response()->json(['data' => $categories],200);
         $categories = Category::paginate(5);
+
+
         //return array_reverse($categories);      
 
        
     }
-    public function indexes()
+    /*public function indexes()
     {
-        return view('users')
+        return view('categories')
          
-    }
+    }*/
+
+    
     public function list()
     {
         return response()->json([
-            'users' => \App\Models\User::latest()->get()
+            'categories' => \App\Models\category::latest()->get()
         ], Response::HTTP_OK);
          
     }

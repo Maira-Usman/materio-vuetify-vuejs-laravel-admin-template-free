@@ -66,7 +66,7 @@ const routes = [
    
   },
   {
-    path: '/editcategory',
+    path: '/category/edit',
     name: 'category',
     component: () => import('@/views/category/edit.vue'),
    
@@ -78,7 +78,7 @@ const routes = [
    
   },
   {
-    path: '/edituser',
+    path: '/user/edit',
     name: 'user',
     component: () => import('@/views/user/edit.vue'),
    
@@ -90,7 +90,7 @@ const routes = [
    
   },
   {
-    path: '/editorder',
+    path: '/order/edit',
     name: 'order',
     component: () => import('@/views/order/edit.vue'),
    
@@ -102,7 +102,7 @@ const routes = [
    
   },
   {
-    path: '/editpage',
+    path: '/page/edit',
     name: 'page',
     component: () => import('@/views/page/edit.vue'),
    
@@ -114,7 +114,7 @@ const routes = [
    
   },
   {
-    path: '/editcoupon',
+    path: '/coupon/edit',
     name: 'coupon',
     component: () => import('@/views/coupon/edit.vue'),
    
@@ -127,7 +127,7 @@ const routes = [
    
   },
   {
-    path: '/editexam',
+    path: '/exam/edit',
     name: 'exam',
     component: () => import('@/views/exam/edit.vue'),
    

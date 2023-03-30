@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { computed } from '@vue/composition-api'
 import { useRouter } from '@/utils'
 import LayoutBlank from '@/layouts/Blank.vue'
@@ -18,7 +18,6 @@ export default {
     LayoutBlank,
     LayoutContent,
     UpgradeToPro,
-    
   },
   setup() {
     const { route } = useRouter()

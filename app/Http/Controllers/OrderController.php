@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::paginate(4);
+        $orders = Order::all(['customer','email','total_earning','exam_code','exams','date','coupon']);
+        return response()->json(['data' => $orders],200);
+        $orders = Order::paginate();
        
     }
 
@@ -31,12 +33,13 @@ class OrderController extends Controller
             'email' => $request->input('email'),
             'total_earning' => $request->input('total_earning'),
             'exam_code' => $request->input('exam_code'),
-            'products/exams' => $request->input('products/exams'),
+            'products/exams' => $request->input('exams'),
             'date' => $request->input('date'),
             'coupon' => $request->input('coupon'),
         ]);
         $order->save();
-        
+        return response()->json('order created!');
+
 
     }
 

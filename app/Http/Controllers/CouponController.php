@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -14,8 +14,10 @@ class CouponController extends Controller
      */
     public function index()
     {
+        $coupons = Coupon::all(['code','discount']);
+        return response()->json(['data' => $coupons],200);
         $coupons = Coupon::paginate(5);
-           
+
     }
 
     /**

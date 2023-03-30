@@ -46,7 +46,7 @@ export default {
             getCoupons() {
               
                 let currentObj = this;
-                axios.get('/coupons', {
+                axios.get('api/coupons', {
                    
                 })
                 .then(function (response) {
@@ -60,45 +60,5 @@ export default {
   },
 
 
-  setup() {
-    const coupons = [
-
-      /*
-      {
-      
-        code: 'New Year',
-        discount: '40%',
-        
-      },
-      {
-       
-        code: 'New20',
-        discount: '20%',
-        
-      },
-      {
-  
-        code: 'Buy 1 Get 1 Free',
-        discount: '0%',
-        
-      },
-      {
-        code: 'Christmas',
-        discount: '20%',
-        
-      },
-      {
-        
-        code: 'CHMS',
-        discount: '20%',
-       
-      },
-      */
-    ]
-
-    return {
-      coupons,
-    }
-  },
 }
 </script>

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\CouponController;
 
 
@@ -28,7 +28,7 @@ Route::middleware('api')->group(function () {
     Route::apiResource('categories', CategoryController::class);
     Route::apiResource('users', UserController::class);
     Route::apiResource('orders', OrderController::class);
-    Route::apiResource('pages', PagesController::class);
+    Route::apiResource('pages', PageController::class);
     Route::apiResource('coupons', CouponController::class);
 });
 /*
