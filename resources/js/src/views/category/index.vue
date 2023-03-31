@@ -12,21 +12,15 @@
       </thead>
       <tbody>
       
-        <tr v-for="item in categories":key="item.category">
-          <td class="text-center">{{ item.name }}</td>
-          <td class="text-center">{{ item.quantity }}</td>
-          <td class="text-center">{{ item.action }}</td>
-          
-          <td class="text-center">
-           <button>DELETE</button>   
-           <button>edit</button>
+        <tr  v-for="(category,index) in categories" :key="index">
+          <td class="text-center">{{ category.name }}</td>
+          <td class="text-center">{{ category.quantity }}</td>
+          <td class="text-center">{{ category.action }}
+            <button @click="deleteCategory(category.id)">DELETE</button>
+          <button @click="editCategory(category.id)">EDIT</button>
           </td>
          </tr>
-        <tr v-for="(category,index) in categories" :key="index">
-            {{ category.name }}
-            {{ category.quantity }}
-            {{ category.action }}
-        </tr>
+       
     </tbody>
     </template>
   </v-simple-table>
@@ -44,22 +38,24 @@ export default {
             categories:[]
         }
     },
-    mounted(){
-        this.getCategories()
+    mounted() {
+    this.getCategories()
+  },
+  methods: {
+    async getCategories() {
+      await axios
+        .get('/api/categories')
+        .then(response => {
+          this.categories = response.data
+        })
+        .catch(error => {
+          console.log(error)
+          this.categories = []
+        })
+        .catch(function (error) {
+          currentObj.output = error
+        })
     },
-    methods:{
-        async getCategories(){
-            await axios.get('/api/categories').then(response=>{
-                this.categories = response.data
-            }).catch(error=>{
-                console.log(error)
-                this.categories = []
-            })
-                .catch(function (error) {
-                    currentObj.output = error;
-                });
-            }
-
   },
 }
 </script>

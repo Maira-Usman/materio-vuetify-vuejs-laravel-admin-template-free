@@ -50,6 +50,9 @@
           </td>
           <td class="text-center">
             {{ exam.Action }}
+            <button @click="deleteExam(exam.id)">DELETE</button>
+          <button @click="editExam(exam.id)">EDIT</button>
+          </td>
           </td>
         </tr>
       </tbody>

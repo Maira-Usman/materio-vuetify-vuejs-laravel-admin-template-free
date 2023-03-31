@@ -13,7 +13,7 @@
           <th class="text-center text-uppercase">Exam Code</th>
           <th class="text-center text-uppercase">Exams</th>
           <th class="text-center text-uppercase">Date</th>
-          <th class="text-center text-uppercase">Coupon</th>
+          <th class="text-center text-uppercase">order</th>
         </tr>
       </thead>
       <tbody>
@@ -40,7 +40,10 @@
             {{ order.Date }}
           </td>
           <td class="text-center">
-            {{ order.Coupon }}
+            {{ order.order }}
+            <button @click="deleteOrder(order.id)">DELETE</button>
+          <button @click="editOrder(order.id)">EDIT</button>
+          </td>
           </td>
         </tr>
       </tbody>

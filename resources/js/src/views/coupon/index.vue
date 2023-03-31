@@ -1,34 +1,22 @@
 <template>
-
   <v-simple-table>
     <template v-slot:default>
       <thead>
         <tr>
-          <th class="text-center text-uppercase">
-            coupons
-          </th>
+          <th class="text-center text-uppercase">coupons</th>
         </tr>
-          <tr>
-          <th class="text-center text-uppercase">
-            Code
-          </th>
-          <th class="text-center text-uppercase">
-            Discount
-          </th>
+        <tr>
+          <th class="text-center text-uppercase">Code</th>
+          <th class="text-center text-uppercase">Discount</th>
         </tr>
       </thead>
       <tbody>
-      
-        <tr
-          v-for="item in coupons"
-          :key="item.coupon"
-        >
-
+        <tr  v-for="(coupon,index) in coupons" :key="index">
           <td class="text-center">
-            {{ item.code }}
+            {{ coupon.code }}
           </td>
           <td class="text-center">
-            {{ item.discount }}
+            {{ coupon.discount }}
           </td>
         </tr>
       </tbody>
@@ -37,28 +25,33 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
-       mounted(){
-  this.getCoupons()
+
+  name:"coupons",
+    data(){
+        return {
+            coupons:[]
+        }
+    },
+  mounted() {
+    this.getCoupons()
   },
   methods: {
-            getCoupons() {
-              
-                let currentObj = this;
-                axios.get('api/coupons', {
-                   
-                })
-                .then(function (response) {
-                    this.coupons = response.data;
-                })
-                .catch(function (error) {
-                    currentObj.output = error;
-                });
-            }
-
+    async getCoupons() {
+      await axios
+        .get('/api/coupons')
+        .then(response => {
+          this.coupon = response.data
+        })
+        .catch(error => {
+          console.log(error)
+          this.coupon = []
+        })
+        .catch(function (error) {
+          currentObj.output = error
+        })
+    },
   },
-
-
 }
 </script>

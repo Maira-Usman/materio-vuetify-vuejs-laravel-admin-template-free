@@ -58,6 +58,9 @@
 
           <td class="text-center">
             {{ user.Action }}
+            <button @click="deleteUser(user.id)"> DELETE </button>
+          <button @click="editUser(user.id)"> EDIT </button>
+          
           </td>
         </tr>
       </tbody>

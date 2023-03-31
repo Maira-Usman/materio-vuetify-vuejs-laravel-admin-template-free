@@ -25,6 +25,9 @@
           </td>
           <td class="text-center">
             {{ page.action }}
+            <button @click="deletePage(page.id)">DELETE</button>
+          <button @click="editPage(page.id)">EDIT</button>
+          </td>
           </td>
         </tr>
       </tbody>
