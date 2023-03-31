@@ -21,7 +21,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(index, user) in users" :key="index">
+        <tr v-for="(user, index) in users" :key="index">
           <td class="text-center">
             {{ user.name }}
           </td>
@@ -58,9 +58,8 @@
 
           <td class="text-center">
             {{ user.Action }}
-            <button @click="deleteUser(user.id)"> DELETE </button>
-          <button @click="editUser(user.id)"> EDIT </button>
-          
+            <button @click="deleteUser(user.id)">DELETE</button>
+            <button @click="editUser(user.id)">EDIT</button>
           </td>
         </tr>
       </tbody>

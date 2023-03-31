@@ -30,13 +30,13 @@ class CategoryController extends Controller
     }*/
 
     
-    public function list()
+    /*public function list()
     {
         return response()->json([
             'categories' => \App\Models\category::latest()->get()
         ], Response::HTTP_OK);
          
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
